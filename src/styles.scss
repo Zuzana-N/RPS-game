@@ -1,0 +1,310 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+$primary-color: #141648;
+$secondary-color: #F8EDED;
+$font-family: 'Inter', sans-serif;
+$border-radius: 10px;
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+@mixin border($color) {
+    border: 10px solid $color
+}
+
+body {
+    font-family: $font-family;
+    background-color: $primary-color;
+    color: $secondary-color;
+    padding: 2em;
+    position: relative;
+}
+
+/* Box with name and score */
+.score {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 700px;
+    border: 1px solid $secondary-color;
+    border-radius: 1em;
+    padding: 1em;
+    margin: 0 auto;
+    gap: 1em;
+}
+
+.game-name {
+    font-size: 2em;
+    max-width: 8ch;
+}
+
+.score-field {
+    background-color: $secondary-color;
+    color: $primary-color;
+    padding: 1em;
+    width: 250px;
+    height: 160px;
+    border-radius: $border-radius;
+    text-align: center;
+}
+
+h2 {
+    font-size: 30px;
+    margin-bottom: 0.3em;
+}
+
+.score-count {
+    font-size: 45px;
+}
+
+.score-text {
+    font-size: 10px;
+    @include flex-center();
+    gap: 3em;
+}
+
+@media (max-width: 630px) {
+    .game-name {
+        font-size: 1em;
+    }
+    .score-field {
+        min-width: 40%;
+        max-width: 45%;
+        max-height: 100px;
+    }
+    h2 {
+        font-size: 1em;
+    }
+    .score-count {
+        font-size: 1.5em;
+    }
+}
+
+/* The actual game field */
+.game-field {
+    @include flex-center();
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 2em auto 0;
+    gap: 4em;
+    @media (max-width: 700px) {
+        gap: 1.5em;
+    }
+}
+
+.pick-title {
+    font-size: 20px;
+}
+
+.user-pick {
+    text-align: center;
+    max-width: 450px;
+}
+.user-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 auto;
+    gap: 3em;
+    transform: translateY(-10%)
+}
+
+.user-option {
+    height: 150px;
+    width: 150px;
+    background-color: white;
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+    margin-top: 1em;
+}
+
+.user-options div {
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+#user-rock {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    transform: translateY(40%);
+    @include border(#FEDDDF);
+    &:hover,&:active {
+        @include border(#FF7880);
+    }
+}
+
+#user-paper {
+    @include border(#DDFEE7);
+    &:hover,&:active {
+        @include border(#8BFFAC);
+    }
+}
+
+#user-scissors {
+    @include border(#FEFBDD);
+    &:hover,&:active {
+        @include border(#FEEA31);
+    }
+}
+
+svg {
+    height: 80px;
+    fill: $primary-color;
+}
+
+.svg-scissors {
+    transform: rotate(270deg) scaleX(-1);
+}
+
+/* Styling for the field with the result and the new game(round) button */
+.result-btn {
+    @include flex-center();
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    max-width: 300px;
+}
+
+@media (max-width: 600px) {
+    .result-btn {
+        width: 350px;
+        order: 3;
+    }
+    .user-option {
+        height: 120px;
+        width: 120px;
+    }
+    svg {
+        height: 60px;
+    }
+}
+
+@media (max-height: 770px) and (max-width: 400px) {
+    .user-option {
+        height: 100px;
+        width: 100px;
+    }
+    svg {
+        height: 50px;
+    }
+}
+
+.result {
+    color: white;
+    text-transform: uppercase;
+    width: fit-content;
+    font-weight: 600;
+    font-size: 30px;
+    animation: bigger-result 1.5s 1 forwards;
+}
+
+@keyframes bigger-result {
+    50% {
+        transform: scale(120%);
+    }
+
+    100% {
+        transform: scale(100%);
+    }
+}
+
+button {
+    font-family: $font-family;
+    font-weight: 400;
+    font-size: 20px;
+    border-radius: $border-radius;
+    cursor: pointer;
+}
+
+.new-game-btn {
+    background-color: $secondary-color;
+    border: 1px solid transparent;
+    padding: 0.7em 1em;
+    &:hover,&:active {
+        background-color: $primary-color;
+        color: $secondary-color;
+        border: 1px solid $secondary-color
+    }
+}
+
+.one-pick {
+    @include flex-center();
+    flex-direction: column;
+    align-items: center;
+}
+
+.one-pick h3 {
+    text-align: center;
+}
+
+/* Footer styling */
+footer {
+    margin-top: 2em;
+    position: fixed;
+    inset: auto 0 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 0 2em;
+}
+
+/* Footer buttons styling */
+.ftr-btns {
+    display: flex;
+    justify-content: right;
+    max-width: calc(100% - 10em);
+    gap: clamp(0.5em, 2em, 5em);
+    @media (max-width: 1200px) {
+        max-width: 100%;
+    }
+}
+.secondary-btn {
+    background-color: $primary-color;
+    border: 1px solid $secondary-color;
+    color: $secondary-color;
+    padding: 0.5em 1em;
+    width: 150px;
+    &:hover,&:active {
+        background-color: $secondary-color ;
+        color: $primary-color;
+        border: 1px solid transparent;
+    }
+}
+.copyright {
+    font-size: 14px;
+    opacity: 0.8;
+    text-align: center;
+    background-color: $primary-color;
+}
+
+/* Popup styling */
+.popup {
+    position: absolute;
+    height: fit-content;
+    width: 250px;
+    background-color: $primary-color;
+    color: $secondary-color;
+    border: 1px solid $secondary-color;
+    transform: translateY(-103%);
+    border-radius: $border-radius;
+    transition: 750ms ease-in-out;
+    padding: 1em;
+}
+
+.hide {
+    transform: translateY(30%);
+    transition: 750ms ease-in-out;
+    opacity: 0;
+}
+
+.icon-rps {
+    fill: $secondary-color;
+    height: 15px;
+}
