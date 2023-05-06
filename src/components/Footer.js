@@ -20,7 +20,7 @@ export default function Footer() {
                 <button className="secondary-btn" onClick={showRules}>{show ? "CLOSE": "RULES"}</button>
             </div>
             <p className="copyright">
-            Copyright 2023, Zuzana Náprstková.
+            Copyright 2023, <a href="https://www.zuzana-n.cz">Zuzana Náprstková</a>
             </p>
         </footer>
     )

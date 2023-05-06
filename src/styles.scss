@@ -284,6 +284,13 @@ footer {
     background-color: $primary-color;
 }
 
+.copyright > a {
+    color: $secondary-color;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
 /* Popup styling */
 .popup {
     position: absolute;
