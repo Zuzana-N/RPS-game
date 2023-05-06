@@ -5,6 +5,8 @@
 This is my take on coding a classic game of Rock Paper Scissors. My game works as follows: the user selects to play either with rock, paper, or scissors (by clicking on one of the options). After that the user sees what the opponent (the program) chose and who wins. Then the user can push a button to play again.
 The logic is as usual: rock beats scissors, scissors beat paper and paper beats rock. The program picks randomly among the choices.
 
+You can the finished project [here](https://www.zuzana-n.cz/rps/).
+
 ## Stack
 React 18 (functional programming) and SCSS. 
 I used the design from a [Frontend Mentor challenge](https://www.frontendmentor.io/challenges/rock-paper-scissors-game-pTgwgvgH), but I changed it a bit by recreating and amending it in Figma.
